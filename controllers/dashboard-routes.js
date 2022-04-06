@@ -7,7 +7,7 @@ router.get('/', withAuth, async (req, res) => {
     const postData = await Post.findAll({
       where: {
         // TODO: SET USERID userId TO THE REQUEST SESSION LOGGED-IN USER ID
-        userId: req.session.id
+        userId: req.session.userId
       },
     });
 
@@ -15,6 +15,7 @@ router.get('/', withAuth, async (req, res) => {
 
     res.render('all-posts-admin', {
       layout: 'dashboard',
+      logged_in: req.session.userId,
       posts,
     });
   } catch (err) {

@@ -9,7 +9,7 @@ router.post('/', withAuth, async (req, res) => {
       // TODO: COMMENT BODY IN REQUEST USING SPREAD
       // TODO: SET USERID userId TO SESSION LOGGEDIN USERID
       ...newComment.body,
-      userId: req.session.id
+      userId: req.session.userId
     });
     res.json(newComment);
   } catch (err) {
